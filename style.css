@@ -978,7 +978,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* Mobile nav */
 @media (max-width: 940px) {
-  .cov-readout { display: none; }
+  .nav-inner { gap: 10px; }
+  .nav-left { gap: 10px; }
+  .cov-readout {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
   .nav-toggle { display: flex; }
   .nav-menu {
     position: fixed;
@@ -999,4 +1005,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   .nav-menu > li > a { display: block; padding: 12px 14px; font-size: 1rem; }
   .nav-cta-item { margin: 8px 0 0; }
   .nav-cta { display: block; text-align: center; }
+}
+
+@media (max-width: 520px) {
+  .brand { gap: 8px; }
+  .brand-name { font-size: 0.95rem; }
+  .cov-readout {
+    padding: 3px 7px;
+    font-size: 0.66rem;
+    letter-spacing: 0;
+  }
 }
