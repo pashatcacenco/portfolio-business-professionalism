@@ -166,6 +166,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 11px;
+  min-width: 0;
   color: var(--text);
   font-family: var(--font-display);
   font-weight: 600;
@@ -183,7 +184,13 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-weight: 500;
   letter-spacing: -0.02em;
 }
-.brand-name { font-size: 1.02rem; letter-spacing: -0.01em; }
+.brand-name {
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .nav-menu {
   display: flex;
@@ -715,7 +722,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   gap: 13px;
-  margin-top: auto;
+  margin-top: 22px;
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -979,7 +986,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Mobile nav */
 @media (max-width: 940px) {
   .nav-inner { gap: 10px; }
-  .nav-left { gap: 10px; }
+  .nav-left {
+    flex: 1 1 auto;
+    gap: 10px;
+  }
+  .brand { flex: 1 1 auto; }
   .cov-readout {
     display: inline-flex;
     align-items: center;
@@ -1009,10 +1020,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 @media (max-width: 520px) {
   .brand { gap: 8px; }
-  .brand-name { font-size: 0.95rem; }
+  .brand-name {
+    font-size: 0.95rem;
+    max-width: 118px;
+  }
   .cov-readout {
-    padding: 3px 7px;
-    font-size: 0.66rem;
+    padding: 3px 6px;
+    font-size: 0.62rem;
     letter-spacing: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-name { max-width: 84px; }
+  .cov-readout {
+    padding-inline: 5px;
+    font-size: 0.58rem;
   }
 }
