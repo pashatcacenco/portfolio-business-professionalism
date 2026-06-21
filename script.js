@@ -245,9 +245,7 @@
   var form = document.getElementById("contactForm");
   if (form) {
     var TO_EMAIL = "pashatcacenco@gmail.com";
-    // Paste a form-backend URL here (e.g. "https://formspree.io/f/yourFormId") to
-    // collect submissions off-device. While empty, the form falls back to mailto.
-    var FORM_ENDPOINT = "";
+    var FORM_ENDPOINT = "https://formspree.io/f/mwvdeqao";
     var fields = {
       name: { input: document.getElementById("cf-name"), err: document.getElementById("err-name") },
       email: { input: document.getElementById("cf-email"), err: document.getElementById("err-email") },
