@@ -27,6 +27,7 @@
   var header = document.getElementById("siteHeader");
   var covFill = document.getElementById("covFill");
   var covReadout = document.getElementById("covReadout");
+  var compactCoverage = window.matchMedia("(max-width: 520px)");
 
   function onScroll() {
     var y = window.scrollY || window.pageYOffset;
@@ -34,8 +35,9 @@
 
     var docH = document.documentElement.scrollHeight - window.innerHeight;
     var pct = docH > 0 ? Math.min(100, Math.max(0, (y / docH) * 100)) : 0;
+    var roundedPct = Math.round(pct);
     if (covFill) covFill.style.width = pct + "%";
-    if (covReadout) covReadout.textContent = "coverage " + Math.round(pct) + "%";
+    if (covReadout) covReadout.textContent = compactCoverage.matches ? roundedPct + "%" : "coverage " + roundedPct + "%";
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
