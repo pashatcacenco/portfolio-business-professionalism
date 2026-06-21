@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pavel Tcacenco, QA Automation Engineer based in Auckland, New Zealand. Scalable test automation frameworks in TypeScript and Playwright." />
+  <meta name="author" content="Pavel Tcacenco" />
+  <title>Pavel Tcacenco | QA Automation Engineer</title>
+
+  <!-- Simple monogram favicon (no external file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f7d57'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EPT%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============== COVERAGE / SCROLL PROGRESS BAR ============== -->
+  <div class="coverage" role="presentation">
+    <div class="coverage-fill" id="covFill"></div>
+  </div>
+
+  <!-- ================= NAV ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a class="brand" href="#hero" aria-label="Pavel Tcacenco, home">
+          <span class="brand-mark" aria-hidden="true">PT</span>
+          <span class="brand-name">Pavel Tcacenco</span>
+        </a>
+        <span class="cov-readout" id="covReadout" aria-hidden="true">coverage 0%</span>
+      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Project</a></li>
+          <li><a href="#development">Development</a></li>
+          <li><a href="#reflective">Reflections</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="nav-cta-item">
+            <a class="nav-cta" href="assets/Pavel-Tcacenco-CV.pdf" download>Download CV</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero" aria-labelledby="hero-name">
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">// portfolio.status</p>
+        <h1 class="hero-name reveal" id="hero-name">Pavel Tcacenco</h1>
+        <p class="hero-tagline reveal">
+          Building quality into software, from automated tests to real business value.
+        </p>
+
+        <!-- Animated status terminal -->
+        <div class="terminal reveal" id="terminal" role="group" aria-label="Status terminal output">
+          <div class="terminal-bar">
+            <span class="t-dot t-red" aria-hidden="true"></span>
+            <span class="t-dot t-amber" aria-hidden="true"></span>
+            <span class="t-dot t-green" aria-hidden="true"></span>
+            <span class="terminal-title">pavel@portfolio: ~/status</span>
+          </div>
+          <div class="terminal-body">
+            <p class="t-cmd">
+              <span class="t-prompt" aria-hidden="true">$</span>
+              <span class="t-typed" id="termCmd" data-text="run pavel.portfolio --status" aria-hidden="true">run pavel.portfolio --status</span><span class="t-cursor" id="termCursor" aria-hidden="true"></span>
+              <span class="sr-only">Command: run pavel.portfolio --status</span>
+            </p>
+            <ul class="t-output" id="termOut">
+              <li class="t-out"><span class="t-check" aria-hidden="true">&#10003;</span> QA Automation Engineer</li>
+              <li class="t-out"><span class="t-check" aria-hidden="true">&#10003;</span> Auckland, New Zealand</li>
+              <li class="t-out"><span class="t-check" aria-hidden="true">&#10003;</span> Bachelor's in Computer Science</li>
+              <li class="t-out"><span class="t-check" aria-hidden="true">&#10003;</span> Master's in Business Informatics (in progress)</li>
+              <li class="t-out"><span class="t-check" aria-hidden="true">&#10003;</span> status: open to opportunities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/pavel-tcacenco" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="mailto:pashatcacenco@gmail.com">
+            Email me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TECH STACK MARQUEE ================= -->
+    <div class="marquee" id="marquee" role="img" aria-label="Tech stack: Playwright, TypeScript, JavaScript, Postman, GitHub Actions, Docker, Allure, Node.js, Git, REST API">
+      <div class="marquee-track" id="marqueeTrack">
+        <div class="marquee-group">
+          <span class="m-item">Playwright</span>
+          <span class="m-item">TypeScript</span>
+          <span class="m-item">JavaScript</span>
+          <span class="m-item">Postman</span>
+          <span class="m-item">GitHub Actions</span>
+          <span class="m-item">Docker</span>
+          <span class="m-item">Allure</span>
+          <span class="m-item">Node.js</span>
+          <span class="m-item">Git</span>
+          <span class="m-item">REST API</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="m-item">Playwright</span>
+          <span class="m-item">TypeScript</span>
+          <span class="m-item">JavaScript</span>
+          <span class="m-item">Postman</span>
+          <span class="m-item">GitHub Actions</span>
+          <span class="m-item">Docker</span>
+          <span class="m-item">Allure</span>
+          <span class="m-item">Node.js</span>
+          <span class="m-item">Git</span>
+          <span class="m-item">REST API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT (STAGE 01 // BUILD) ================= -->
+    <section class="section" id="about" aria-labelledby="about-h">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="stage-label">STAGE 01 <span class="stage-slash">//</span> BUILD</span>
+          <h2 class="section-title" id="about-h">About me</h2>
+        </header>
+
+        <!-- Animated metrics -->
+        <ul class="stats reveal" aria-label="Key stats">
+          <li class="stat">
+            <span class="stat-num" data-target="10" data-suffix="+">0</span>
+            <span class="stat-label">Years in IT</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-target="3" data-suffix="+">0</span>
+            <span class="stat-label">Years in QA automation</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-target="12" data-suffix="">0</span>
+            <span class="stat-label">MBI courses completed</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-target="10" data-suffix="+">0</span>
+            <span class="stat-label">Tools in the stack</span>
+          </li>
+          <li class="stat">
+            <span class="stat-num" data-target="2" data-suffix="">0</span>
+            <span class="stat-label">Core languages (TS, JS)</span>
+          </li>
+        </ul>
+
+        <div class="about-grid">
+          <div class="about-body reveal">
+            <p>
+              I'm Pavel Tcacenco, a QA Automation Engineer based in Auckland, New Zealand.
+              I hold a Computer Science degree and am currently completing a Master's in
+              Business Informatics at ICL Graduate Business School. My work centres on
+              building scalable test automation frameworks in TypeScript and JavaScript,
+              with hands-on experience across UI automation, API testing, CI/CD pipeline
+              configuration, and reporting.
+            </p>
+            <p>
+              What I bring is a combination that's less common than it should be: technical
+              QA depth alongside genuine business understanding. I don't see quality as
+              simply finding bugs. I see it as making sure software delivers real value to
+              its users and the business behind it. My Master's is a deliberate step toward
+              strengthening that business side, so I can connect the technical work I do
+              every day to the outcomes organisations actually care about.
+            </p>
+
+            <h3 class="about-sub">Career aspirations</h3>
+            <p>
+              My immediate goal is to secure a QA Automation Engineer role in Auckland and
+              continue building robust, maintainable testing systems. Looking further ahead,
+              I want to grow from a strong individual contributor into a role that bridges
+              quality engineering and business analysis, using my MBI to move toward QA
+              leadership or a hybrid quality and business-analysis position where I can shape
+              what gets built and why, not only verify that it works.
+            </p>
+
+            <h3 class="about-sub">Self-evaluation</h3>
+            <p>
+              Whetten and Cameron (2020) argue that self-awareness sits at the core of
+              effective management, built on understanding yourself across a few key areas:
+              personal values, cognitive style, attitude toward change, and how you deal
+              with people. I worked through these areas to give an honest read on my
+              strengths and the things I still need to work on.
+            </p>
+            <p>
+              <strong>Strengths.</strong> On cognitive style, I'm an analytical thinker. I
+              break a problem into parts, work from facts, and reason systematically. That
+              helps a lot in test design and digging into bugs. On values, reliability and
+              honesty matter to me: I see things through and hold my work to a high standard.
+              Both colleagues and classmates have pointed this out, independently of each
+              other. As for change, I'm comfortable with it and curious about it. New tools
+              and technologies don't scare me, and in my field that's not optional.
+            </p>
+            <p>
+              <strong>Areas to work on.</strong> Where I have the most room to grow is how I
+              communicate with people. My teammates gave me honest feedback: sometimes I
+              explain things too technically and not everyone follows. I've also noticed I
+              tend to take technical work onto myself and delegate less than I should. My
+              tolerance for ambiguity is fine, but I want to strengthen it, because I'm
+              moving toward roles with more open-ended business problems rather than only
+              clear-cut technical ones.
+            </p>
+            <p>
+              The most valuable thing here is that I found these areas through a structured
+              self-assessment rather than guesswork. That's exactly the point Whetten and
+              Cameron make: self-awareness is the starting point for deliberate development.
+            </p>
+            <p class="ref-note">
+              Reference: Whetten, D. A., &amp; Cameron, K. S. (2020).
+              <a href="https://www.pearson.com/en-us/subject-catalog/p/developing-management-skills/P200000006438/9780135642917" target="_blank" rel="noopener"><em>Developing management skills</em></a> (10th ed.). Pearson.
+            </p>
+
+            <div class="about-contact">
+              <a class="about-link" href="https://www.linkedin.com/in/pavel-tcacenco" target="_blank" rel="noopener">LinkedIn profile <span aria-hidden="true">&#8599;</span></a>
+              <a class="about-link" href="mailto:pashatcacenco@gmail.com">pashatcacenco@gmail.com</a>
+            </div>
+          </div>
+
+          <aside class="about-facts reveal" aria-label="Quick facts">
+            <dl class="facts">
+              <div class="fact">
+                <dt>Location</dt>
+                <dd>Auckland, NZ</dd>
+              </div>
+              <div class="fact">
+                <dt>Education</dt>
+                <dd>BSc Computer Science &middot; MSc Business Informatics (in progress, ICL)</dd>
+              </div>
+              <div class="fact">
+                <dt>Primary stack</dt>
+                <dd>Playwright &middot; TypeScript &middot; JavaScript</dd>
+              </div>
+              <div class="fact">
+                <dt>Secondary</dt>
+                <dd>Python &middot; Postman &middot; Docker</dd>
+              </div>
+              <div class="fact">
+                <dt>Methodology</dt>
+                <dd>Agile / Scrum</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECT WORK (STAGE 02 // TEST) ================= -->
+    <section class="section section-alt" id="work" aria-labelledby="work-h">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="stage-label">STAGE 02 <span class="stage-slash">//</span> TEST</span>
+          <h2 class="section-title" id="work-h">Project work</h2>
+        </header>
+
+        <article class="project reveal">
+          <div class="proj-corner" aria-hidden="true"></div>
+          <header class="proj-head">
+            <p class="eyebrow">Featured project</p>
+            <h3 class="project-title">End-to-End Test Automation Framework</h3>
+          </header>
+
+          <div class="proj-node">
+            <span class="rm-node">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.8 1.8 18.4A1.5 1.5 0 0 0 3.1 20.6h17.8a1.5 1.5 0 0 0 1.3-2.2L13.7 3.8a1.5 1.5 0 0 0-2.6 0Z"/><line x1="12" y1="9" x2="12" y2="13.5"/><line x1="12" y1="17" x2="12" y2="17"/></svg>
+            </span>
+            <span class="rm-stage">01 <span class="rm-slash">·</span> Challenge</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Challenge</span>
+            <p class="field-text">At Minora Agency, the team was shipping features faster than manual testing could keep up with. Regression was slow and inconsistent, bugs occasionally slipped into production, and there was no reliable, repeatable way to confirm that new code hadn't broken something across different browsers.</p>
+          </div>
+
+          <div class="proj-node">
+            <span class="rm-node">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+            </span>
+            <span class="rm-stage">02 <span class="rm-slash">·</span> Goal</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Goal</span>
+            <p class="field-text">Build a scalable test automation framework that runs reliably in CI, covers both UI and API, and gives the team fast, honest feedback on every code change.</p>
+          </div>
+
+          <div class="proj-node">
+            <span class="rm-node">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20.5a7 7 0 0 1 14 0"/></svg>
+            </span>
+            <span class="rm-stage">03 <span class="rm-slash">·</span> Role</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Role</span>
+            <p class="field-text">I owned the framework design from start to finish, from choosing the architecture to building the test suites and wiring everything into the pipeline.</p>
+          </div>
+
+          <div class="proj-node">
+            <span class="rm-node">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="M3 12.5 12 17l9-4.5"/><path d="M3 17 12 21.5 21 17"/></svg>
+            </span>
+            <span class="rm-stage">04 <span class="rm-slash">·</span> Approach</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Approach</span>
+            <p class="field-text">I built it on Playwright and TypeScript using the Page Object Model, so the tests stayed maintainable as the application grew. I wrote API test suites for REST endpoints, authentication flows, and schema validation. I set up pipelines in GitHub Actions for multi-browser, parallel runs. I plugged in Allure reporting with history and trends, and added visual regression and accessibility checks (WCAG) to the automated coverage.</p>
+          </div>
+
+          <div class="proj-node proj-node--end">
+            <span class="rm-node rm-node--end">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16.5 9 10l4 4 8-8.5"/><path d="M21 5.5h-4.5"/><path d="M21 5.5V10"/></svg>
+            </span>
+            <span class="rm-stage">05 <span class="rm-slash">·</span> Outcome</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Outcome</span>
+            <p class="field-text">The team got repeatable, automated regression coverage that runs on every commit, takes the load off manual testing, and catches bugs earlier. <span>A full regression pass that used to take most of a day now runs in about an hour.</span></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= PROFESSIONAL DEVELOPMENT (STAGE 03 // DEPLOY) ================= -->
+    <section class="section" id="development" aria-labelledby="dev-h">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="stage-label">STAGE 03 <span class="stage-slash">//</span> DEPLOY</span>
+          <h2 class="section-title" id="dev-h">Professional development</h2>
+        </header>
+
+        <div class="dev-grid">
+          <article class="card dev-card reveal">
+            <h3 class="card-title">Personal &amp; professional learning goals</h3>
+            <div class="pplg-grid">
+              <div class="pplg-col">
+                <span class="pplg-label">Personal goals</span>
+                <ul class="goal-list">
+                  <li><strong>Communicating for a mixed audience.</strong> Learn to explain technical things in plain language for people who aren't engineers, a direct response to my team's feedback. I frame technical points around impact, and practise in presentations and stand-ups over the next six months.</li>
+                  <li><strong>Leadership and delegation.</strong> Grow from a reliable individual contributor into someone who lifts the team. I take on coordinating roles and deliberately share out technical work instead of carrying all of it.</li>
+                  <li><strong>Going deeper into business analysis.</strong> Build on what I learned in Enterprise Systems and Business Analysis by applying BA techniques directly in my QA work and Master's assignments.</li>
+                </ul>
+              </div>
+              <div class="pplg-col">
+                <span class="pplg-label">Professional goals</span>
+                <ul class="goal-list">
+                  <li><strong>Land a QA Automation Engineer role in Auckland</strong> (near-term, from early 2026), supported by a strong portfolio, an updated LinkedIn, and a tidy professional presence online.</li>
+                  <li><strong>Grow into a QA lead or hybrid quality-and-business role</strong> within three to five years, pairing my technical track record with the Master's.</li>
+                  <li><strong>Build my professional network in New Zealand</strong> by staying active on LinkedIn, using my ICL connections, and getting involved in the local tech community.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="card dev-card cv-card reveal">
+            <h3 class="card-title">Curriculum Vitae</h3>
+            <p class="muted">A full breakdown of experience, skills, and education.</p>
+
+            <ul class="cv-contents">
+              <li>Work experience &amp; QA automation projects</li>
+              <li>Technical skills &amp; testing toolkit</li>
+              <li>Education &amp; certifications</li>
+              <li>Languages &amp; contact details</li>
+            </ul>
+
+            <div class="cv-file">
+              <span class="cv-file-ext" aria-hidden="true">PDF</span>
+              <span class="cv-file-meta">
+                <span class="cv-file-name">Pavel-Tcacenco-CV.pdf</span>
+                <span class="cv-file-sub">Updated June 2026</span>
+              </span>
+            </div>
+
+            <a class="btn btn-primary btn-block cv-download" href="assets/Pavel-Tcacenco-CV.pdf" download>
+              <span class="btn-icon cv-arrow" aria-hidden="true">&#8595;</span> Download CV (PDF)
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REFLECTIVE LEARNING (STAGE 04 // REPORTS) ================= -->
+    <section class="section section-alt" id="reflective" aria-labelledby="refl-h">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="stage-label">STAGE 04 <span class="stage-slash">//</span> REPORTS</span>
+          <h2 class="section-title" id="refl-h">Reflective learning</h2>
+        </header>
+        <p class="section-lede reveal">
+          A set of reflections on what I've learned across my ICL courses, written like test
+          reports: each one logs a specific learning, why it mattered, and how I'm applying
+          it. The final entry is a peer-evaluation reflection based on feedback from my team.
+        </p>
+
+        <div class="report-log reveal" id="reportLog">
+          <div class="report-row">
+            <button class="report-head" id="r1-btn" aria-expanded="false" aria-controls="r1">
+              <span class="report-id">log/01</span>
+              <span class="report-title">Professionalism is a system, not a coat of paint</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r1" role="region" aria-labelledby="r1-btn">
+              <div class="report-panel-inner">
+                <p>The biggest shift in my thinking from Business Professionalism was learning to look at professionalism through systems theory. I used to think being professional was a handful of surface things: dress the part, communicate clearly, hit your deadlines. The course showed me it's all connected. My digital footprint, my online reputation, how I handle ethics and privacy, how I present myself, these are all parts of one system. A weak spot in one part drags down the whole thing.</p>
+<p>For me as a QA engineer who's actively job-hunting in Auckland, that turned out to be genuinely useful. I spend my whole working life thinking in systems: how a change in one module can break something in another, why you can't test a component in isolation from its environment. The course helped me apply that same thinking to my own professional identity. My LinkedIn, my GitHub activity, my portfolio, how I come across in interviews, these aren't separate checklist items. Together they form the story an employer reads about who I am.</p>
+<p>What stuck with me most was digital footprint and online reputation. In the digital age, professionalism is increasingly public and permanent. What I post and build is searchable and sticks around. For someone in tech, that's both a risk and an opportunity. A thoughtful, consistent online presence is itself evidence of professionalism.</p>
+<p>I've already started acting on this. This very portfolio is a site I built as code and host myself, I update my LinkedIn deliberately, and I keep my technical presence consistent. Going forward, I want to treat my reputation the way I treat software quality: build it on purpose and maintain it continuously, instead of patching it in a panic when something's already gone wrong.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-row">
+            <button class="report-head" id="r2-btn" aria-expanded="false" aria-controls="r2">
+              <span class="report-id">log/02</span>
+              <span class="report-title">Security is a business risk, not just a technical problem</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r2" role="region" aria-labelledby="r2-btn">
+              <div class="report-panel-inner">
+                <p>In Information Security Management, I stopped seeing security as a purely technical task and started seeing it as a business risk. I would once have described security in terms of firewalls, authentication, and encryption, the things engineers configure. The course showed me that security decisions are really decisions about risk: what a company is willing to protect, at what cost, and against which threats. Confidentiality, integrity, and availability aren't just technical properties. They're promises a business makes to its customers.</p>
+<p>This changed how I think about quality in my own work. I already build authentication-flow tests and schema validation into my API suites at Minora, but the course helped me understand why that matters beyond "the test passed." A broken authentication flow isn't just a red test. It's a breach of trust and a risk to the business. Security testing and quality assurance work toward the same goal: software people can rely on.</p>
+<p>What resonated most was the idea that security is everyone's responsibility, not just the security team's. As a QA engineer, I'm one of the last lines before code reaches users, which puts me in a good position to catch things with security implications: data handled badly, missing access controls, unvalidated input.</p>
+<p>I've started applying this by treating security scenarios as proper test cases rather than an afterthought, and by describing risks in business terms when I report them. Going forward, I want to turn this into a more systematic, security-aware approach to testing, because in the digital age the line between "quality" and "secure" is more and more the same line.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-row">
+            <button class="report-head" id="r3-btn" aria-expanded="false" aria-controls="r3">
+              <span class="report-id">log/03</span>
+              <span class="report-title">Understand the business first, then test the system</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r3" role="region" aria-labelledby="r3-btn">
+              <div class="report-panel-inner">
+                <p>Enterprise Systems and Business Analysis taught me to look at software from the business process inward, not from the code outward. As a QA person, my instinct was always to start with the system: what it does, where it breaks. The course pushed me to first understand the process the software supports: who the stakeholders are, what value the process delivers, what the company is actually trying to achieve.</p>
+<p>This was useful because it filled a gap I hadn't even named. I was good at checking that software worked correctly, but less good at asking whether it did the right thing for the business. Learning techniques for analysing processes and gathering requirements helped me connect my technical testing to real business value. That's exactly the mix of QA depth and business understanding I want to be known for.</p>
+<p>The most practical thing I took away was how requirements and acceptance criteria grow out of business analysis. A good acceptance criterion isn't just a technical condition. It's a business need translated into something you can test. That idea improves my day-to-day work directly.</p>
+<p>I've already started applying it at Minora: I write acceptance criteria that point back to the business outcome, not just the technical behaviour, and I ask "what is this process for?" before building tests around it. Going forward, this is the bridge I most want to build in my career: moving from a QA engineer who tests systems to someone who understands the business those systems serve. That's why I'm doing the Master's.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-row">
+            <button class="report-head" id="r4-btn" aria-expanded="false" aria-controls="r4">
+              <span class="report-id">log/04</span>
+              <span class="report-title">Quality across the whole service lifecycle</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r4" role="region" aria-labelledby="r4-btn">
+              <div class="report-panel-inner">
+                <p>IT Service Management and Strategy changed where I draw the line on my own responsibility. As an automation engineer, I used to think my job ended once the tests passed and the code shipped. Service-management thinking, the view of how IT services are designed, delivered, run, and improved, showed me that deployment is the middle of the story, not the end.</p>
+<p>This was useful because it reframed tools I already use. I build CI/CD pipelines in GitHub Actions and plug in Allure reporting with trend history. The course helped me see these not just as engineering convenience but as part of continuous service delivery and improvement, feedback loops that keep a service healthy over time. My pipeline isn't only about catching bugs before release. It's part of how a company keeps quality going as a service.</p>
+<p>What hit home most was continual service improvement: the idea that quality is kept up through constant measurement and iteration, not achieved once and forgotten. That's a lot like good test automation, where trend data across many runs tells you more than any single result.</p>
+<p>I've started applying this by watching the trends in my Allure reports rather than just pass/fail on one run, and by thinking about how my testing supports the service after release, not only before it. Going forward, I want to fit my QA work into that service lifecycle and connect automated quality to the long-term reliability of the services I help deliver.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-row">
+            <button class="report-head" id="r5-btn" aria-expanded="false" aria-controls="r5">
+              <span class="report-id">log/05</span>
+              <span class="report-title">Turning "it&#39;s broken" into evidence</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r5" role="region" aria-labelledby="r5-btn">
+              <div class="report-panel-inner">
+                <p>Research Methods sharpened a skill I use constantly but didn't always call research: investigating, documenting, and reasoning from evidence. The course covered how to frame questions, gather data systematically, and reach conclusions you can defend. At first it felt far from QA, but I quickly realised that working through a bug is a research process.</p>
+<p>It was useful because it gave structure to something I'd been doing on instinct. When I find a bug, I'm basically forming a hypothesis about what's wrong, gathering evidence for it, and presenting a conclusion others can check. Research Methods gave me the discipline to do that more rigorously: to separate observation from guesswork and make my reasoning reproducible.</p>
+<p>The most valuable lesson was the emphasis on evidence and reproducibility. A vague bug report ("it doesn't work") is like an unsupported claim. A strong one, with clear steps to reproduce, expected versus actual behaviour, and logs or screenshots, is evidence someone else can independently confirm. That's the same bar good research holds itself to.</p>
+<p>I've already applied this to how I write up bugs at Minora: I treat each report as a small evidence-based case rather than a complaint, so developers can reproduce and fix issues faster. The course also gave me confidence for the research side of my Master's. Going forward, I want to carry evidence-based thinking across all my work, because whether I'm testing software or working through a business problem, the conclusions are only as strong as the evidence behind them.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-row report-row--peer">
+            <button class="report-head" id="r6-btn" aria-expanded="false" aria-controls="r6">
+              <span class="report-id">review/06</span>
+              <span class="report-title">Peer evaluation: feedback from my project team</span>
+              <span class="report-tag">peer review</span>
+              <span class="report-status">PASS</span>
+              <span class="report-chev" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="report-panel" id="r6" role="region" aria-labelledby="r6-btn">
+              <div class="report-panel-inner">
+                <p>During a group project at ICL, I took on two things: planning the team's workflow and leading the technical part of the deliverable. After the project, my classmates shared feedback on how I'd contributed. They said I had strong technical and analytical skills, that I was someone they could rely on, and that I was a committed team member who saw things through. They also gave me one honest piece of constructive feedback: at times I explained things too technically, and not everyone found it easy to follow.</p>
+<p>That second comment taught me more than the praise did. Being a strong technical person is valuable, but it doesn't count for much if I can't get my point across to people who don't share that background. In a mixed team, where not everyone is an engineer, communication is part of the technical contribution, not something separate from it.</p>
+<p>This ties directly into my work as a QA Automation Engineer, where I'm in Agile/Scrum teams every day. I'm constantly explaining test results, bugs, and risks to developers, product owners, and non-technical people. If a bug report or a test strategy only makes sense to another engineer, it has failed at its real job, which is to help someone make a decision.</p>
+<p>Since then I've been applying this on purpose: I frame technical points around impact rather than implementation, I check that people are actually following instead of assuming it, and I adjust the level of detail to who I'm talking to. It's a habit I'm still building, but the feedback gave me a clear, specific thing to work on. It confirmed that I'm technically solid and, more usefully, showed me exactly where to grow so that strength works for the whole team.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT (STAGE 05 // SHIP) ================= -->
+    <section class="section" id="contact" aria-labelledby="contact-h">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="stage-label">STAGE 05 <span class="stage-slash">//</span> SHIP</span>
+          <h2 class="section-title" id="contact-h">Contact</h2>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-intro reveal">
+            <p class="contact-lede">
+              I'm open to QA Automation Engineer roles in Auckland, collaboration, or just a
+              chat about testing and quality. The quickest way to reach me is email or
+              LinkedIn, or leave a message with the form below.
+            </p>
+            <ul class="contact-links" aria-label="Direct contact">
+              <li>
+                <span class="contact-label">Email</span>
+                <a href="mailto:pashatcacenco@gmail.com">pashatcacenco@gmail.com</a>
+              </li>
+              <li>
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/pavel-tcacenco" target="_blank" rel="noopener">linkedin.com/in/pavel-tcacenco</a>
+              </li>
+              <li>
+                <span class="contact-label">Location</span>
+                <span>Auckland, New Zealand</span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <p class="form-note">Leave a message and I'll get back to you.</p>
+            <div class="field-row">
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required aria-required="true" />
+              <span class="field-error" id="err-name" role="alert" hidden>Please enter your name.</span>
+            </div>
+            <div class="field-row">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required aria-required="true" />
+              <span class="field-error" id="err-email" role="alert" hidden>Please enter a valid email.</span>
+            </div>
+            <div class="field-row">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" required aria-required="true"></textarea>
+              <span class="field-error" id="err-message" role="alert" hidden>Please enter a message.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> Pavel Tcacenco</span>
+      <a class="to-top" href="#hero">Back to top <span aria-hidden="true">&#8593;</span></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
